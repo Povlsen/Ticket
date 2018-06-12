@@ -1,5 +1,7 @@
 body, html{
 	margin:0px;
+	border: 0px;
+	height: 100%;
 }
 ul{
 	margin:0px;
@@ -17,7 +19,7 @@ ul{
 }
 #contentGrid{
 	display: grid;
-	grid-template-columns: 15% 42.5% 42.5%
+	grid-template-columns: 40% 60%
 
 }
 #header{
@@ -28,15 +30,14 @@ ul{
 	background-color: green;
 	height: 100%;
 }
-#nav{
-	background-color: purple;
-	height: 100%;
-}
 #orderForm{
 	display: grid;
 	grid-template-columns: 100%;
+	grid-template-rows: 5% 20% 5% 20% 10% auto;
+	grid-gap: 2.5%;
 	background-color: yellow;
 	height: 100%;
+
 }
 #orderList{
 	background-color: red;
