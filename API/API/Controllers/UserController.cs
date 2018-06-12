@@ -53,15 +53,14 @@ namespace API.Controllers
                     var user = db.Users.Where(x => (x.Email == info.userName || x.UserName == info.userName) && x.Password == info.password).FirstOrDefault();
                     if (user != null)
                     {
-                        db.Users.Add(user);
+                        return Request.CreateResponse(HttpStatusCode.OK);
                     }
                     else
                     {
                         return Request.CreateResponse(HttpStatusCode.BadRequest);
                     }
                 }
-
-                return Request.CreateResponse(HttpStatusCode.OK);
+                                
             }
             catch
             {
