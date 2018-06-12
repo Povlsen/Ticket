@@ -9,6 +9,7 @@
 
 namespace Db
 {
+    using Db.Enums;
     using System;
     using System.Collections.Generic;
     
@@ -17,7 +18,7 @@ namespace Db
         public int Id { get; set; }
         public int CreatedBy { get; set; }
         public string Description { get; set; }
-        public int State { get; set; }
+        public OrderState State { get; set; }
         public string RegNum { get; set; }
         public System.DateTime Created { get; set; }
         public int ShopId { get; set; }
