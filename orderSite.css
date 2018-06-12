@@ -19,7 +19,7 @@ ul{
 }
 #contentGrid{
 	display: grid;
-	grid-template-columns: 40% 60%
+	grid-template-columns: 25% 75%
 
 }
 #header{
@@ -31,10 +31,6 @@ ul{
 	height: 100%;
 }
 #orderForm{
-	display: grid;
-	grid-template-columns: 100%;
-	grid-template-rows: 5% 20% 5% 20% 10% auto;
-	grid-gap: 2.5%;
 	background-color: yellow;
 	height: 100%;
 
