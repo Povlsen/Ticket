@@ -23,19 +23,32 @@ ul{
 
 }
 #header{
-	background-color: blue;
+	display: grid;
+	grid-template-columns:  50% auto;
+	background-color: #606060;
 	height: 100%;
 }
 #login{
-	background-color: green;
+	background-color: #23b2ff;
 	height: 100%;
 }
 #orderForm{
-	background-color: yellow;
+	background-color: #3a3a3a;
 	height: 100%;
 
 }
+#orderForm > input{
+	width: 80%;
+	border-radius: 5px;
+}
+#orderForm > label > b {
+	color: white;
+}
 #orderList{
-	background-color: red;
+	background-color: #e2e2e2;
 	height: 100%;
+}
+#carImg{
+	height: 100%;
+
 }
