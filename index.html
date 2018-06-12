@@ -3,8 +3,41 @@
 <html>
 <head>
 	<title>Ticket</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-
+	<div id="primaryGrid">
+		<div id="headerGrid">
+			<div id="header">
+				HEADER
+			</div>
+			<div id="login">
+				<form>
+					<label><b>Username</b></label>
+					<input type="text" name="username" placeholder="Type in username" required>
+					<label><b>Password</b></label>
+					<input type="password" name="password" placeholder="Type in password" required>
+					<button type="submit">Login</button>
+				</form>
+			</div>
+		</div>
+		<div id="contentGrid">
+			<div id="nav">
+				NAV
+			</div>
+			<form id="orderForm">
+				<label><b>Title:</b></label>
+				<input type="text" name="title" placeholder="Type in title" required>
+				<label><b>Registration number:</b></label>
+				<input type="te" name="regNum" placeholder="Type in registration number">
+				<button type="submit">Create order</button>
+			</form>
+			<ul id="orderList">
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+		</div>
+	</div>
 </body>
 </html>

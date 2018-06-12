@@ -1,0 +1,44 @@
+body, html{
+	margin:0px;
+}
+ul{
+	margin:0px;
+}
+#primaryGrid{
+	display: grid;
+	grid-template-rows: 20% 80%;
+	height: 100%;
+	width: 100%;
+}
+#headerGrid{
+	display: grid;
+	grid-template-columns: 85% 15%;
+	
+}
+#contentGrid{
+	display: grid;
+	grid-template-columns: 15% 42.5% 42.5%
+
+}
+#header{
+	background-color: blue;
+	height: 100%;
+}
+#login{
+	background-color: green;
+	height: 100%;
+}
+#nav{
+	background-color: purple;
+	height: 100%;
+}
+#orderForm{
+	display: grid;
+	grid-template-columns: 100%;
+	background-color: yellow;
+	height: 100%;
+}
+#orderList{
+	background-color: red;
+	height: 100%;
+}
