@@ -85,6 +85,26 @@ namespace API.Controllers
             {
                 return Request.CreateResponse(HttpStatusCode.InternalServerError);
             }
-        }     
+        }
+
+        [HttpGet]
+        [Route("Get/{orderId}")]
+        public HttpResponseMessage GetOrder([FromUri] int orderId)
+        {
+            try
+            {
+                Orders order;
+                using (TicketDbEntities db = new TicketDbEntities())
+                {
+                    order = db.Orders.Where(x => x.Id == orderId).FirstOrDefault();
+                }
+
+                return Request.CreateResponse(HttpStatusCode.OK, order);
+            }
+            catch (Exception e)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError);
+            }
+        }
     }
 }
