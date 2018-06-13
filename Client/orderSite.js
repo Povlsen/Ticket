@@ -1,3 +1,16 @@
+function orderCreate() {
+    let info = {
+        model: $('#orderForm-model')[0].value,
+        regnumber: $('#orderForm-regNum')[0].value,
+        description: $('#orderForm-description')[0].value, 
+    }
+
+    $.post(server + 'Order/Post', info, (data) => {
+        console.log(data)
+    });
+      return false
+}
+
 var mlCodes = [
     {
         code: "en",

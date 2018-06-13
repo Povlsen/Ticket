@@ -15,6 +15,8 @@ function login() {
             }
         });
 
+        sessionStorage.clear();
+        sessionStorage.setItem('UserInfo', data);
         document.location.href = 'orderSite.html';
     });
       return false

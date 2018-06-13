@@ -2,6 +2,7 @@
 <html>
 <head>
 	<title>Ticket</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="orderSite.css">
 	<script src="orderSite.js"></script>
 </head>
@@ -10,7 +11,7 @@
 		<div id="headerGrid">
 			<div id="header">
 				<h1 id="compName">Car Fix Inc.</h1>
-				<img  id="carImg" src="http://www.pngpix.com/wp-content/uploads/2016/06/PNGPIX-COM-Jaguar-F-TYPE-Luxury-Sports-Blue-Car-PNG-Image-500x218.png">
+				<img  id="carImg" src="https://www.pngpix.com/wp-content/uploads/2016/06/PNGPIX-COM-Jaguar-F-TYPE-Luxury-Sports-Blue-Car-PNG-Image-500x218.png">
 			</div>
 			<div id="login">
 				<div class="hide">
@@ -24,12 +25,14 @@
 			</div>
 		</div>
 		<div id="contentGrid">
-			<form id="orderForm">
-				<label><b>Title:</b></label><br>
-				<input type="text" name="title" placeholder="Type in title" required><br>
+			<form id="orderForm" onsubmit="return orderCreate()">
+				<label><b>Model:</b></label><br>
+				<input type="text" name="model" id="orderForm-model" placeholder="Type in model" required><br>
 				<label><b>Registration number:</b></label><br>
-				<input type="text" name="regNum" placeholder="Type in registration number"><br>
-				<button type="submit">Create order</button>
+				<input type="text" name="regNum" id="orderForm-regNum" placeholder="Type in registration number"><br>
+				<label><b>Description:</b></label><br>
+				<input type="text" name="title" id="orderForm-description" placeholder="Type in description" required><br>
+				<input type="submit" name="submit" value="Create order"></input>
 			</form>
 			<ul id="orderList">
 				<li></li>
