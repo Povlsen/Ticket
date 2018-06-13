@@ -3,8 +3,9 @@
 <head>
 	<title>Ticket</title>
 	<link rel="stylesheet" type="text/css" href="orderSite.css">
+	<script src="orderSite.js"></script>
 </head>
-<body>
+<body onload="mlr()">
 	<div id="primaryGrid">
 		<div id="headerGrid">
 			<div id="header">
@@ -13,10 +14,11 @@
 			</div>
 			<div id="login">
 				Language:
-				<select>
-					<option value="0">English</option>
-					<option value="1">Danish</option>
+				<select name="language" class="language_selector" id="languageDropMenu">
+					<!--<option value="0">English</option>
+					<option value="1">Danish</option>-->
 				</select>
+				<span data-mlr-text>Hello you</span>
 			</div>
 		</div>
 		<div id="contentGrid">
