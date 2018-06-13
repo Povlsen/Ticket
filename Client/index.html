@@ -6,6 +6,21 @@
 	<link rel="stylesheet" type="text/css" href="indexCSS.css">
 	<script src="index.js"></script>
 	<script src="login.js"></script>
+		<script type="text/javascript">
+		function submitForm(){
+
+			var formData = JSON.stringify($("#userInput").serializeArray());
+			$.ajax({
+				type: "POST",
+				url: "http://ticket-api.nas-tech.dk/API/User/Create",
+				data: formData,
+				success: function(){},
+				dataType: "json",
+				contentType : "application/json"
+			});
+			// return false; //Degug
+		}
+	</script>
 </head>
 <body>
 <div>
@@ -21,7 +36,7 @@
 		</form>
 	</div>
 	<div id="signUp">
-		<form>
+		<form id="userInput" name="userInput" onsubmit="/*return*/ /*Debug*/ submitForm()">
 			<p>First Name:</p>
 			<input type="textarea" name="firstName" id="firstName" placeholder="Enter firstname...">
 			<p>Last Name:</p>
