@@ -32,6 +32,8 @@ public partial class Orders
 
     public int ShopId { get; set; }
 
+    public string Model { get; set; }
+
 }
 
 }
