@@ -8,9 +8,11 @@ using System.Web.Http;
 
 namespace API.Controllers
 {
+    
     [RoutePrefix("API/User")]
     public class UserController : ApiController
     {
+        [OverrideAuthorization]
         [HttpPost]
         [Route("Create")]
         public HttpResponseMessage CreateUser([FromBody] Users user)
@@ -40,31 +42,79 @@ namespace API.Controllers
             }
         }
 
-
+        [OverrideAuthorization]
         [HttpPost]
         [Route("Login")]
         public HttpResponseMessage Login([FromBody] LoginInfo info)
         {
             try
             {
-                using (TicketDbEntities db = new TicketDbEntities())
+                using (TicketDbEntities data = new TicketDbEntities())
                 {
-                    var user = db.Users.Where(x => (x.Email == info.userName || x.UserName == info.userName) && x.Password == info.password).FirstOrDefault();
+                    var user = data.Users.Where(x => (x.Email == info.userName || x.UserName == info.userName) && x.Password == info.password).FirstOrDefault();
                     if (user != null)
                     {
-                        return Request.CreateResponse(HttpStatusCode.OK);
+                        string t = null;
+                        DateTime compare = DateTime.Now.AddHours(2);
+                        try
+                        {
+                            t = data.Tokens.Where(x => x.UserId == user.Id && x.ExpireDate > compare).FirstOrDefault().Token;
+                        }
+                        catch
+                        {
+
+                        }
+
+                        if (t == null)
+                        {
+                            Tokens token = new Tokens();
+                            token.UserId = user.Id;
+                            token.Token = GetToken();
+                            token.ExpireDate = DateTime.Now.AddDays(1);
+                            data.Tokens.Add(token);
+                            data.SaveChanges();
+
+                            t = token.Token;
+                        }
+
+                        LoginResponse response = new LoginResponse();
+                        response.Name = user.Name;
+                        response.UserId = user.Id;
+                        response.Token = t;
+                        
+                        return Request.CreateResponse(HttpStatusCode.OK, response);
                     }
                     else
                     {
-                        return Request.CreateResponse(HttpStatusCode.BadRequest);
+                        return Request.CreateResponse(HttpStatusCode.Unauthorized);
                     }
                 }
-                                
             }
             catch
             {
                 return Request.CreateResponse(HttpStatusCode.InternalServerError);
             }
+        }
+
+
+        private string GetToken()
+        {
+            Random random = new Random();
+            const string chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!#&/()=?@${[]}|+-£%¤*^<>½§_";
+            string token;
+            while (true)
+            {
+                token = new string(Enumerable.Repeat(chars, 100).Select(s => s[random.Next(s.Length)]).ToArray());
+                using (TicketDbEntities data = new TicketDbEntities())
+                {
+                    if (!data.Tokens.Where(x => x.Token == token).Any())
+                    {
+                        break;
+                    }
+                }
+            }
+            return token;
+
         }
 
     }

@@ -28,5 +28,7 @@ namespace Db
         public virtual DbSet<Orders> Orders { get; set; }
         public virtual DbSet<Shops> Shops { get; set; }
         public virtual DbSet<Users> Users { get; set; }
+        public virtual DbSet<Tokens> Tokens { get; set; }
+        public virtual DbSet<Translations> Translations { get; set; }
     }
 }

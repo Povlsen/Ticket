@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="Enums\Genarel.cs" />
     <Compile Include="InfoObjects\LoginInfo.cs" />
+    <Compile Include="InfoObjects\LoginResponse.cs" />
     <Compile Include="Orders.cs">
       <DependentUpon>TicketDb.tt</DependentUpon>
     </Compile>
@@ -74,6 +75,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>TicketDb.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Tokens.cs">
+      <DependentUpon>TicketDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Translations.cs">
+      <DependentUpon>TicketDb.tt</DependentUpon>
     </Compile>
     <Compile Include="Users.cs">
       <DependentUpon>TicketDb.tt</DependentUpon>

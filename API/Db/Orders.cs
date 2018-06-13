@@ -9,10 +9,10 @@
 
 namespace Db
 {
-    using Db.Enums;
+    using Enums;
     using System;
     using System.Collections.Generic;
-    
+
     public partial class Orders
     {
         public int Id { get; set; }
