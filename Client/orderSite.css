@@ -14,19 +14,22 @@ ul{
 }
 #headerGrid{
 	display: grid;
-	grid-template-columns: 85% 15%;
-	
+	grid-template-columns: 90% 10%;
 }
 #contentGrid{
 	display: grid;
 	grid-template-columns: 25% 75%
-
+	
 }
 #header{
 	display: grid;
 	grid-template-columns:  50% auto;
 	background-color: #606060;
 	height: 100%;
+}
+#compName{
+	color: lightgrey;
+	border-left: 5%;
 }
 #login{
 	background-color: #23b2ff;
@@ -38,11 +41,26 @@ ul{
 
 }
 #orderForm > input{
+	margin-left: 7.5%;
+	margin-bottom:5%;
 	width: 80%;
-	border-radius: 5px;
+	padding:2.5%;
+	border:none;
+	font-size: 80%
+}
+#orderForm > button{
+	margin-left: 7.5%;
+	margin-bottom:5%;
+	width: 80%;
+	padding:2.5%;
+	font-size: 80%;
+	border:none;
+	background-color:#23b2ff;
+	color:white;
 }
 #orderForm > label > b {
 	color: white;
+	margin-left: 7.5%;
 }
 #orderList{
 	background-color: #e2e2e2;
@@ -51,4 +69,7 @@ ul{
 #carImg{
 	height: 100%;
 
+}
+.hide{
+	display: none;
 }
