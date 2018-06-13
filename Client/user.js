@@ -1,10 +1,13 @@
+//var server = 'http://localhost:64881/API/'
+var server = 'https://ticket-api.nas-tech.dk/API/'
+
 function login() {
     let info = { 
         email: $('#login-email')[0].value, 
         password: $('#login-password')[0].value 
     }
 
-    $.post('http://localhost:64881/API/User/Login', info, (data) => {
+    $.post(server + 'User/Login', info, (data) => {
         // set the header to contain the token to all future requests
         $.ajaxSetup({
             headers: {
@@ -26,7 +29,7 @@ function signup() {
         password2: $('#signUp-password2')[0].value
     }
 
-    $.post('http://localhost:64881/API/User/Post', info, (data) => {
+    $.post(server + 'User/Post', info, (data) => {
         if (data.length == 0) {
             // login
             showSignin();
