@@ -1,4 +1,3 @@
-//var server = 'http://localhost:64881/API/'
 var server = 'https://ticket-api.nas-tech.dk/API/'
 
 function login() {
@@ -8,16 +7,7 @@ function login() {
     }
 
     $.post(server + 'User/Login', info, (data) => {
-        // set the header to contain the token to all future requests
-        $.ajaxSetup({
-            headers: {
-                'Authorization': 'Basic ' + data.Token
-            }
-        });
-
-        sessionStorage.clear();
-        sessionStorage.setItem('UserInfo', data);
-        document.location.href = 'orderSite.html';
+        document.location.href = 'orderSite.html?data=' + encodeURIComponent(JSON.stringify(data));
     });
       return false
 }
