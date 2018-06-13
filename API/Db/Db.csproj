@@ -54,6 +54,7 @@
     <Compile Include="Enums\Genarel.cs" />
     <Compile Include="InfoObjects\LoginInfo.cs" />
     <Compile Include="InfoObjects\LoginResponse.cs" />
+    <Compile Include="InfoObjects\UserInfo.cs" />
     <Compile Include="Orders.cs">
       <DependentUpon>TicketDb.tt</DependentUpon>
     </Compile>

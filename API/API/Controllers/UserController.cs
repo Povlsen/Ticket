@@ -1,40 +1,82 @@
 ﻿using Db;
 using Db.InfoObjects;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace API.Controllers
 {
-    
     [RoutePrefix("API/User")]
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class UserController : ApiController
     {
         [OverrideAuthorization]
         [HttpPost]
-        [Route("Create")]
-        public HttpResponseMessage CreateUser([FromBody] Users user)
+        [Route("Post")]
+        public HttpResponseMessage userPost([FromBody] UserInfo user)
         {
             try
             {
-                using(TicketDbEntities db = new TicketDbEntities())
+                var errors = new List<string>();
+
+                using (TicketDbEntities db = new TicketDbEntities())
                 {
-                    if (db.Users.Where(x => x.Email == user.Email || x.UserName == user.UserName).Count() == 0)
+                    Users oldUser = null;
+
+                    if (user.Id > 0)
                     {
-                        user.CreatedDate = DateTime.Now;
-                        db.Users.Add(user);
+                        // eddit user
+                        oldUser = db.Users.Where(x => x.Id == user.Id).FirstOrDefault();
+                        if (oldUser == null)
+                            return Request.CreateResponse(HttpStatusCode.BadRequest);
                     }
                     else
                     {
-                        return Request.CreateResponse(HttpStatusCode.BadRequest);
+                        // new user
+                        oldUser = new Users();
+                        oldUser.CreatedDate = DateTime.Now;
                     }
 
-                    db.SaveChanges();
+                    oldUser.Name = user.Name;
+                    oldUser.Phone = user.Phone;
+                    oldUser.UserType = user.UserType;
+                    oldUser.ShopId = user.ShopId;
+
+                    if (oldUser.Email != user.Email)
+                    {
+                        if (db.Users.Where(x => x.Email == user.Email).Any())
+                        {
+                            errors.Add("email alredy used");
+                        }
+
+                        if (!isValidEmail(user.Email))
+                        {
+                            errors.Add("email is not valid");
+                        }
+
+                        if (errors.Count == 0)
+                            oldUser.Email = user.Email;
+                    }
+
+                    var passwordErrors = passwordValidator(user.Password, user.Password2);
+                    errors.AddRange(passwordErrors);
+                    if (passwordErrors.Count == 0)
+                        oldUser.Password = user.Password;
+
+                    if (errors.Count == 0)
+                    {
+                        if (user.Id <= 0)
+                            db.Users.Add(oldUser);
+
+                        db.SaveChanges();
+                    }               
                 }
 
-                return Request.CreateResponse(HttpStatusCode.OK);
+                return Request.CreateResponse(HttpStatusCode.OK, errors);
             }
             catch (Exception e)
             {
@@ -51,7 +93,7 @@ namespace API.Controllers
             {
                 using (TicketDbEntities data = new TicketDbEntities())
                 {
-                    var user = data.Users.Where(x => (x.Email == info.userName || x.UserName == info.userName) && x.Password == info.password).FirstOrDefault();
+                    var user = data.Users.Where(x => x.Email == info.email && x.Password == info.password).FirstOrDefault();
                     if (user != null)
                     {
                         string t = null;
@@ -115,6 +157,37 @@ namespace API.Controllers
             }
             return token;
 
+        }
+
+        private List<string> passwordValidator(string password1, string password2)
+        {
+            var errors = new List<string>();
+
+            if (password1 != password2)
+                errors.Add("Passwords dosn't match");
+            if (password1.Length < 8)
+                errors.Add("Passwords not long enougth");
+            if (!password1.Any(char.IsUpper))
+                errors.Add("Passwords need uppercase");
+            if (!password1.Any(char.IsLower))
+                errors.Add("Passwords need lowercase");
+            if (!password1.Any(char.IsNumber))
+                errors.Add("Passwords need number");
+
+            return errors;
+        }
+
+        private bool isValidEmail(string email)
+        {
+            try
+            {
+                var temp = new System.Net.Mail.MailAddress(email);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
     }
