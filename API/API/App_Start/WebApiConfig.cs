@@ -17,6 +17,8 @@ namespace API
             config.SuppressDefaultHostAuthentication();
             //config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
 
+            GlobalConfiguration.Configuration.MessageHandlers.Add(new OptionsHttpMessageHandler());
+
             config.Filters.Add(new Authentication());
 
             // Web API routes
