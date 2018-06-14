@@ -2,6 +2,7 @@ body, html{
 	margin:0px;
 	border: 0px;
 	height: 100%;
+
 }
 ul{
 	margin:0px;
@@ -65,13 +66,18 @@ ul{
 #orderList{
 	background-color: #e2e2e2;
 	height: 100%;
-	display:Grid;
-	grid-template-columns: 100%;
 }
 #orderList > div{
+	width: 100%;
+	overflow: auto;
 	display: grid;
-	grid-template-columns:  14% 14% 14% 14% 14% 14% 14%;
+	grid-template-columns:  auto auto auto auto auto auto auto;
 	grid-gap: 1%;
+	height: 10%;
+}
+#orderList >div > div{
+	margin-top: 2.5%;
+	height: 50%;
 }
 
 #carImg{
@@ -92,4 +98,33 @@ ul{
 }
 #logoutBtn:hover{
 	background-color: #474747; 
+}
+
+.modalBtn{
+	height: 50%;
+}
+#modal{
+}
+.modals{
+	display: none;
+	background-color: #696969;
+	position: fixed;
+	width: 100%; 
+	bottom: 0px;
+	z-index: 99;
+}
+.modal-content{
+
+}
+.close{
+	width:90%;
+	padding:0.5%;
+	height: auto;
+	text-align: center;
+	background-color: rgb(82, 15, 15);
+	color:lightgrey;
+	margin-left: 5%;
+}
+#msgForNoOrders{
+	display: none;
 }
