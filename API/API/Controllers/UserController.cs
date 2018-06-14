@@ -125,6 +125,7 @@ namespace API.Controllers
                         LoginResponse response = new LoginResponse();
                         response.Name = user.Name;
                         response.UserId = user.Id;
+                        response.ShopId = user.ShopId;
                         response.Token = t;
                         response.UserType = (UserTypes)user.UserType;
                         

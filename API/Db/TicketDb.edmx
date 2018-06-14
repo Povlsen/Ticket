@@ -35,14 +35,6 @@
           <Property Name="ExpireDate" Type="datetime" Nullable="false" />
           <Property Name="IsExpired" Type="bit" Nullable="false" />
         </EntityType>
-        <EntityType Name="Translations">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Danish" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="English" Type="nvarchar(max)" Nullable="false" />
-        </EntityType>
         <EntityType Name="Users">
           <Key>
             <PropertyRef Name="Id" />
@@ -60,7 +52,6 @@
           <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Shops" EntityType="Self.Shops" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tokens" EntityType="Self.Tokens" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Translations" EntityType="Self.Translations" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -105,7 +96,6 @@
           <EntitySet Name="Shops" EntityType="Self.Shops" />
           <EntitySet Name="Users" EntityType="Self.Users" />
           <EntitySet Name="Tokens" EntityType="TicketDbModel.Tokens" />
-          <EntitySet Name="Translations" EntityType="TicketDbModel.Translations" />
         </EntityContainer>
         <EntityType Name="Tokens">
           <Key>
@@ -116,14 +106,6 @@
           <Property Name="Token" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="ExpireDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="IsExpired" Type="Boolean" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Translations">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Danish" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="English" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -174,15 +156,6 @@
                 <ScalarProperty Name="ExpireDate" ColumnName="ExpireDate" />
                 <ScalarProperty Name="Token" ColumnName="Token" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Translations">
-            <EntityTypeMapping TypeName="TicketDbModel.Translations">
-              <MappingFragment StoreEntitySet="Translations">
-                <ScalarProperty Name="English" ColumnName="English" />
-                <ScalarProperty Name="Danish" ColumnName="Danish" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

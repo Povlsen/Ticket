@@ -9,7 +9,6 @@
         <EntityTypeShape EntityType="TicketDbModel.Shops" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="TicketDbModel.Users" Width="1.5" PointX="2.75" PointY="2.75" IsExpanded="true" />
         <EntityTypeShape EntityType="TicketDbModel.Tokens" Width="1.5" PointX="5.375" PointY="0.75" />
-        <EntityTypeShape EntityType="TicketDbModel.Translations" Width="1.5" PointX="5.375" PointY="3.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

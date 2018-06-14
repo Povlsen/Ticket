@@ -81,9 +81,6 @@
     <Compile Include="Tokens.cs">
       <DependentUpon>TicketDb.tt</DependentUpon>
     </Compile>
-    <Compile Include="Translations.cs">
-      <DependentUpon>TicketDb.tt</DependentUpon>
-    </Compile>
     <Compile Include="Users.cs">
       <DependentUpon>TicketDb.tt</DependentUpon>
     </Compile>
