@@ -9,10 +9,12 @@ function login() {
     $.post(server + 'User/Login', info, (data) => {
         document.location.href = 'orderSite.html?data=' + encodeURIComponent(JSON.stringify(data));
     });
-      return false
+    return false
 }
 
 function signup() {
+    var myList = document.getElementById('errorList');
+    myList.innerHTML ='';
     let info = {
         name: $('#signUp-firstName')[0].value + ' ' + $('#signUp-lastName')[0].value,
         phone: $('#signUp-phoneNumber')[0].value,
@@ -25,10 +27,17 @@ function signup() {
         if (data.length == 0) {
             // login
             showSignin();
+            $('#signupSuccess').empty();
+            $('#signupSuccess').append('User Created! :D');
         } else {
+
             //display errors
-            console.log(data)
+            console.log(data);
+            var errorList = $('#errorList');
+            $.each(data, function (index, val){
+                errorList.append('<li>' + val + '</li>');
+            });
         }
     });
-      return false
+    return false
 }
