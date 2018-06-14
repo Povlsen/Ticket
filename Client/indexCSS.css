@@ -27,6 +27,9 @@ form > p{
         margin-left: 7.5%;
         margin-bottom: 1%;
 }
+form > p:hover{
+        cursor: default;
+}
 .btn{
         background-color: #515151;
         color: #23b2ff;
@@ -35,7 +38,8 @@ form > p{
         height: 10%;
 }
 .btn:hover{
-	background-color: #474747; 
+        background-color: #474747; 
+        cursor: pointer;
 }
 .btn:active{
         background-color: green;
@@ -77,4 +81,7 @@ form > p{
 #errorList > li{
         text-align: left;
         color:red;
+}
+#errorList > li:hover{
+        cursor: default;
 }
