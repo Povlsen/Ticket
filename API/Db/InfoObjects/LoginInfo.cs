@@ -8,7 +8,7 @@ namespace Db.InfoObjects
 {
     public class LoginInfo
     {
-        public string userName { get; set; }
+        public string email { get; set; }
         public string password { get; set; }
     }
 }

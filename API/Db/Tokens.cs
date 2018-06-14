@@ -12,15 +12,12 @@ namespace Db
     using System;
     using System.Collections.Generic;
     
-    public partial class Users
+    public partial class Tokens
     {
         public int Id { get; set; }
-        public int UserType { get; set; }
-        public string Password { get; set; }
-        public string Email { get; set; }
-        public string Name { get; set; }
-        public string Phone { get; set; }
-        public System.DateTime CreatedDate { get; set; }
-        public int ShopId { get; set; }
+        public int UserId { get; set; }
+        public string Token { get; set; }
+        public System.DateTime ExpireDate { get; set; }
+        public bool IsExpired { get; set; }
     }
 }

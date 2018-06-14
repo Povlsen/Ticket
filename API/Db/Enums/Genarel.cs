@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace Db.Enums
 {
-    public enum UserType
+    public enum UserTypes
     {
         client = 0,
         shopOwners = 1
     }
 
-    public enum OrderState
+    public enum OrderStates
     {
         newOrder = 0,
         booked = 1,
