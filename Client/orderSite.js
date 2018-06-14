@@ -14,7 +14,7 @@ const onload = () => {
     
     getOrders()
 }
-function logOut(){
+function logOut() {
     loginRes = undefined;
     document.location.href = 'index.html';
 }
@@ -41,9 +41,7 @@ function orderCreate() {
 }
 
 function getOrders() {
-    if (!loginRes) {
-        document.location.href = 'index.html'
-    }
+    if (!loginRes) logOut()
 
     var url = ''
     if (loginRes.UserType == 0) url = 'Client/' + loginRes.UserId
