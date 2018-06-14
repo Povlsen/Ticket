@@ -3,8 +3,6 @@ $(document).ready(() => {
         $("#login").slideUp("slow");
         $("#signUp").slideDown("slow");
     });
-
-    $("#backBtn").click(showSignin());
 });
 
 const showSignin = () => {
