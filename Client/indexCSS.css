@@ -1,19 +1,60 @@
 html, body{
-	height: 100%;
-	margin: 0;
-	padding: 0;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        background-color: #e2e2e2;
 }
 
-div{
-	position: fixed;
-        width: 20%;
+body > div{
+        position: fixed;
+        height: 100%;
+        width: 30%;
         z-index: 2;
-        top: 50%;
-        left: 50%;
-        margin-top: -10%;
-        margin-left: -10%;
+        left: 10%;
+        background-color: #23b2ff;
+        color: #515151;
+        color: (35, 178, 255);        
+        text-align: center;
 }
-
 input{
-	border-radius: 5px;
+        border:none;
+        width: 80%;
+        padding: 2.5%;
+}
+form > p{
+        color: white;
+        text-align: left;
+        margin-left: 7.5%;
+        margin-bottom: 1%;
+}
+form > p:hover{
+        cursor: default;
+}
+.btn{
+        background-color: #515151;
+        color: #23b2ff;
+        border: none;
+        width:85%;
+        height: 10%;
+}
+.btn:hover{
+        background-color: #474747; 
+        cursor: pointer;
+}
+.btn:active{
+        background-color: green;
+}
+#signUp{
+        display: none;
+}
+#signUp, #login{
+        border-color: #515151;
+}
+#notUserBtn:hover{
+        color: red;
+        cursor: pointer;
+}
+#backBtn:hover{
+        color: red;
+        cursor: pointer;
 }

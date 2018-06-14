@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Sign up</title>
+	<link rel="stylesheet" type="text/css" href="indexCSS.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		function submitForm(){
+
+			var formData = JSON.stringify($("#userInput").serializeArray());
+			$.ajax({
+				type: "POST",
+				url: "http://ticket-api.nas-tech.dk/API/User/Create",
+				data: formData,
+				success: function(){},
+				dataType: "json",
+				contentType : "application/json"
+			});
+			// return false; //Degug
+		}
+	</script>
+</head>
+<body>	
+	<div>
+		<form id="userInput" name="userInput" onsubmit="/*return*/ /*Debug*/ submitForm();">
+			<p>First Name:</p>
+			<input type="textarea" name="user[0][firstName]" id="user[0][firstName]" placeholder="First Name">
+
+			<p>Last Name:</p>
+			<input type="textarea" name="user[0][lastName]" id="user[0][lastName]" placeholder="Last Name">
+
+			<p>E-mail:</p>
+			<input type="email" name="user[0][email]" id="user[0][email]" placeholder="E-mail">
+
+			<p>Phone Number:</p>
+			<input type="tel" name="user[0][phoneNumber]" id="user[0][phoneNumber]" placeholder="Phone Number">
+
+			<p>Password:</p>
+			<input type="password" name="user[0][password1]" id="user[0][password1]" placeholder="Password">
+
+			<p>Repeat Password</p>
+			<input type="password" name="user[0][password2]" id="user[0][password2]" placeholder="Repeat Password"><br>
+
+			<br><input type="submit" name="submit" id="submit" value="Sign up" class="signUpButton"><br>
+
+			<p>By signing up, you accept our <a style="color: gray;" href="">Terms & Conditions</a></p>
+			<p id="test"></p>
+		</form>
+	</div>
+</body>
+</html>
+
