@@ -13,27 +13,27 @@ namespace Db
 {
 
 using System;
-    using System.Collections.Generic;
+using System.Collections.Generic;
     
-public partial class Orders
-{
+    public partial class Orders
+    {
 
-    public int Id { get; set; }
+        public int Id { get; set; }
 
-    public int CreatedBy { get; set; }
+        public int CreatedBy { get; set; }
 
-    public string Description { get; set; }
+        public string Description { get; set; }
 
-    public int State { get; set; }
+        public int State { get; set; }
 
-    public string RegNum { get; set; }
+        public string RegNum { get; set; }
 
-    public System.DateTime Created { get; set; }
+        public System.DateTime Created { get; set; }
 
-    public int ShopId { get; set; }
+        public int ShopId { get; set; }
 
-    public string Model { get; set; }
+        public string Model { get; set; }
 
-}
+    }
 
 }

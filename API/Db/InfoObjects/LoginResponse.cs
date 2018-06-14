@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Db.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,5 +12,6 @@ namespace Db.InfoObjects
         public string Name { get; set; }
         public int UserId { get; set; }
         public string Token { get; set; }
+        public UserTypes UserType { get; set; }
     }
 }

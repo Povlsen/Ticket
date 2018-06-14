@@ -1,4 +1,5 @@
 ﻿using Db;
+using Db.Enums;
 using Db.InfoObjects;
 using System;
 using System.Collections.Generic;
@@ -29,6 +30,8 @@ namespace API.Controllers
 
                     if (user.Id > 0)
                     {
+                        var userId = new Helpers().getUserIdFromRequest();
+
                         // eddit user
                         oldUser = db.Users.Where(x => x.Id == user.Id).FirstOrDefault();
                         if (oldUser == null)
@@ -123,6 +126,7 @@ namespace API.Controllers
                         response.Name = user.Name;
                         response.UserId = user.Id;
                         response.Token = t;
+                        response.UserType = (UserTypes)user.UserType;
                         
                         return Request.CreateResponse(HttpStatusCode.OK, response);
                     }

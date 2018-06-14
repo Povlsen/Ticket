@@ -7,6 +7,7 @@ using System.Web.Http;
 using System.Web.Http.Cors;
 using Db;
 using Db.Enums;
+using Db.InfoObjects;
 
 namespace API.Controllers
 {
@@ -52,7 +53,8 @@ namespace API.Controllers
                     }                                    
                 }
 
-                return Request.CreateResponse(HttpStatusCode.OK, newOrder);
+                var resOrder = toOrdetInfo(new List<Orders>() { newOrder }).First();
+                return Request.CreateResponse(HttpStatusCode.OK, resOrder);
             }
             catch (Exception e)
             {
@@ -66,12 +68,13 @@ namespace API.Controllers
         {
             try
             {
-                var orders = new List<Orders>();
+                var tempOrders = new List<Orders>();
                 using (TicketDbEntities db = new TicketDbEntities())
                 {
-                    orders = db.Orders.Where(x => x.ShopId == shopId).ToList();                    
+                    tempOrders = db.Orders.Where(x => x.ShopId == shopId).ToList();                    
                 }
 
+                var orders = toOrdetInfo(tempOrders);
                 return Request.CreateResponse(HttpStatusCode.OK, orders);
             }
             catch (Exception e)
@@ -86,12 +89,13 @@ namespace API.Controllers
         {
             try
             {
-                var orders = new List<Orders>();
+                var tempOrders = new List<Orders>();
                 using (TicketDbEntities db = new TicketDbEntities())
                 {
-                    orders = db.Orders.Where(x => x.CreatedBy == userId).ToList();
+                    tempOrders = db.Orders.Where(x => x.CreatedBy == userId).ToList();
                 }
 
+                var orders = toOrdetInfo(tempOrders);
                 return Request.CreateResponse(HttpStatusCode.OK, orders);
             }
             catch (Exception e)
@@ -106,18 +110,59 @@ namespace API.Controllers
         {
             try
             {
-                Orders order;
+                OrderInfo order;
                 using (TicketDbEntities db = new TicketDbEntities())
                 {
-                    order = db.Orders.Where(x => x.Id == orderId).FirstOrDefault();
-                }
+                    var tempOrder = db.Orders.Where(x => x.Id == orderId).FirstOrDefault();
+                    if (tempOrder == null)
+                        return Request.CreateResponse(HttpStatusCode.BadRequest);
 
+                    order = toOrdetInfo(new List<Orders>() { tempOrder }).First();
+                }
+                
                 return Request.CreateResponse(HttpStatusCode.OK, order);
             }
             catch (Exception e)
             {
                 return Request.CreateResponse(HttpStatusCode.InternalServerError);
             }
+        }
+
+
+        private List<OrderInfo> toOrdetInfo(List<Orders> orders)
+        {
+            var res = new List<OrderInfo>();
+            var users = new List<Users>();
+            var shops = new List<Shops>();
+
+            using (TicketDbEntities db = new TicketDbEntities())
+            {
+                var tempUserIds = orders.Select(y => y.CreatedBy).ToList();
+                var tempShopIds = orders.Select(y => y.ShopId).ToList();
+
+                users = db.Users.Where(x => tempUserIds.Contains(x.Id)).ToList();
+                shops = db.Shops.Where(x => tempShopIds.Contains(x.Id)).ToList();
+            }
+
+            foreach (var o in orders)
+            {
+                var rO = new OrderInfo();
+                rO.Id = o.Id;
+                rO.Model = o.Model;
+                rO.RegNum = o.RegNum;
+                rO.ShopId = o.ShopId;
+                rO.ShopName = shops.FirstOrDefault(x => x.Id == o.ShopId).Name;
+                rO.State = o.State;
+                rO.StateName = Convert.ToString((OrderStates)o.State);
+                rO.Created = o.Created;
+                rO.CreatedByName = users.FirstOrDefault(x => x.Id == o.CreatedBy).Name;
+                rO.CreatedByUserId = o.CreatedBy;
+                rO.Description = o.Description;
+
+                res.Add(rO);
+            }
+
+            return res;
         }
     }
 }
