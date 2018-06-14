@@ -1,0 +1,5 @@
+//////////////////////////////////////////////////////// READ ME ////////////////////////////////////////////////////////
+
+Det er en ticket system til en mekaniker, hvor man kan gå ind, skrive hvad der er galt med din bil, og så kan han gå ind og se de detaljer han har brug for.
+
+Man skal være logget ind, for at kunne se eller lave tickets, hvilket er det første der sker når du går ind på siden.
