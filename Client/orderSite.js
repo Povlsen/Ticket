@@ -14,7 +14,7 @@ const onload = () => {
     
     getOrders()
 }
-function logOut(){
+function logOut() {
     loginRes = undefined;
     document.location.href = 'index.html';
 }
@@ -34,35 +34,50 @@ function orderCreate() {
     }
 
     $.post(server + 'Order/Post', info, (data) => {
-        console.log(data)
+        displayOrder(data)
+        getOrders()
     });
       return false
 }
 
 function getOrders() {
-    //$.get(server + 'Order/Get/Client/' + loginRes.UserId, (data) => {
-    $.get(server + 'Order/Get/Shop/1', (data) => {
+    if (!loginRes) logOut()
+
+    var url = ''
+    if (loginRes.UserType == 0) url = 'Client/' + loginRes.UserId
+    if (loginRes.UserType == 1) url = 'Shop/' + loginRes.ShopId
+
+    $.get(server + 'Order/Get/' + url, (data) => {
         orders = data // save orders
+        
+        var temp = document.getElementById('msgForNoOrders')
+        document.getElementById('orderList').innerHTML = ''
+        document.getElementById('orderList').appendChild(temp)
+
         if (data.length > 0) {
             document.getElementById('msgForNoOrders').className = 'display-none'
 
             $.each(data, (key, val) => {
-                var div = document.createElement('DIV')
-                div.id = val.Id
-
-                var childDiv = document.createElement('DIV')
-                div.innerHTML = '<div>' + val.Id + '</div>'
-                div.innerHTML += '<div>' + val.CreatedByName + '</div>'
-                div.innerHTML += '<div>' + val.Model + '</div>'
-                div.innerHTML += '<div>' + val.RegNum + '</div>'
-                div.innerHTML += '<div>' + val.StateName + '</div>'
-                div.innerHTML += '<div>' + val.Created + '</div>'
-                div.innerHTML += '<button class="modalBtn" onClick=showDescription(' + val.Id + ')>Show more</button>'
-
-                $('#orderList').append(div)
+                displayOrder(val)
             })
         }
     })
+}
+
+function displayOrder(order) {
+    var div = document.createElement('DIV')
+    div.id = order.Id
+
+    var childDiv = document.createElement('DIV')
+    div.innerHTML = '<div>' + order.Id + '</div>'
+    div.innerHTML += '<div>' + order.CreatedByName + '</div>'
+    div.innerHTML += '<div>' + order.Model + '</div>'
+    div.innerHTML += '<div>' + order.RegNum + '</div>'
+    div.innerHTML += '<div>' + order.StateName + '</div>'
+    div.innerHTML += '<div>' + order.Created + '</div>'
+    div.innerHTML += '<button class="modalBtn" onClick=showDescription(' + order.Id + ')>Show more</button>'
+
+    $('#orderList').append(div)
 }
 
 const showDescription = (orderId) => {

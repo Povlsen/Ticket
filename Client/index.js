@@ -11,8 +11,3 @@ const showSignin = () => {
         $("#login").slideDown("slow");
     });
 }
-	function Load(url) {
-$(window).load(function() {      //Do the code in the {}s when the window has loaded 
-  $("#loader").fadeOut("fast");  //Fade out the #loader div
-});
-}
