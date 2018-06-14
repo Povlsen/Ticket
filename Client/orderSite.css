@@ -137,6 +137,10 @@ ul{
 	color:lightgrey;
 	margin-left: 5%;
 }
+.close:hover{
+	cursor: pointer;
+	background-color:rgb(82,10,10);
+}
 #msgForNoOrders{
 	display: none;
 }
