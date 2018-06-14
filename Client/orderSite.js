@@ -36,7 +36,8 @@ function orderCreate() {
 }
 
 function getOrders() {
-    $.get(server + 'Order/Get/Client/' + loginRes.UserId, (data) => {
+    //$.get(server + 'Order/Get/Client/' + loginRes.UserId, (data) => {
+    $.get(server + 'Order/Get/Shop/1', (data) => {
         orders = data // save orders
         if (data.length > 0) {
             $.each(data, (key, val) => {
