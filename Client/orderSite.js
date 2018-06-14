@@ -60,7 +60,7 @@ function getOrders() {
 }
 
 const showDescription = (orderId) => {
-    $("#modal-description").innerHTML = orders.filter(x => x.Id == orderId)[0].Description
+    document.getElementById('modal-description').innerText = orders.filter(x => x.Id == orderId)[0].Description
     $(".modals").slideDown()
 } 
 
