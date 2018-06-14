@@ -31,4 +31,11 @@ function orderCreate() {
       return false
 }
 
-   
+$(document).ready(() =>{
+    $(".modalBtn").click(function(){
+        $(".modals").slideDown();
+    });
+    $(".close").click(function(){
+        $(".modals").slideUp();
+    });
+});
