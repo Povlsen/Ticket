@@ -35,6 +35,9 @@ form > p{
         width:85%;
         height: 10%;
 }
+.btn:hover{
+	background-color: #474747; 
+}
 #signUp{
         display: none;
 }
