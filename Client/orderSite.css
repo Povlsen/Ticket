@@ -81,3 +81,11 @@ ul{
 .hide{
 	display: none;
 }
+#logoutBtn{
+	background-color: #515151;
+    color: #23b2ff;
+	border: none;
+	width:85%;
+	padding: 5%;
+	margin: 7.5%;
+}
