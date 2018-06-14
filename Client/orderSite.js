@@ -49,9 +49,10 @@ function getOrders() {
 
     $.get(server + 'Order/Get/' + url, (data) => {
         orders = data // save orders
-        
+        var title = document.getElementById('orderTitle')
         var temp = document.getElementById('msgForNoOrders')
         document.getElementById('orderList').innerHTML = ''
+        document.getElementById('orderList').appendChild(title)
         document.getElementById('orderList').appendChild(temp)
 
         if (data.length > 0) {
