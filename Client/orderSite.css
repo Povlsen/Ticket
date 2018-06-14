@@ -126,7 +126,6 @@ ul{
 	max-height: 30%;
 }
 #modal-content>div{
-	overflow-y: scroll;
 	margin-bottom: 5%;
 }
 #modal-description{
