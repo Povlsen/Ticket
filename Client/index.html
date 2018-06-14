@@ -15,7 +15,8 @@
 			<input type="textarea" name="email" id="login-email" placeholder="Enter E-mail...">
 			<p>Password:</p>
 			<input type="password" name="password" id="login-password" placeholder="Enter password..."><br> <br>
-			<input class="btn" type="submit" name="submit" id="submitLogin" value="Log in">	
+			<input class="btn" type="submit" name="submit" id="submitLogin" value="Log in">
+			<p name="signupSuccess" id="signupSuccess"></p>
 			<br>
 			<div id="notUserBtn">Not a user? Sign up!</div>
 		</form>
@@ -38,6 +39,7 @@
 			<br>
 			<input type="submit" name="submit" id="submitSignUp" value="Sign up" class="btn"><br>
 			<div id="backBtn" onclick="showSignin()">Back</div>
+			<ul id="errorList" name="errorList"></ul>
 		</form>
 	</div>
 </div>

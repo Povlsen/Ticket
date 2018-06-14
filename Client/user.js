@@ -25,10 +25,15 @@ function signup() {
         if (data.length == 0) {
             // login
             showSignin();
+            $('#signupSuccess').empty();
+            $('#signupSuccess').append('User Created! :D');
         } else {
             //display errors
-            console.log(data)
-        }
-    });
+            console.log(data);
+            var errorList = $('#errorList');
+            $.each(data, function (index, val){
+                errorList.append('<li>' + val.data + '</li>');
+            });
+        };
       return false
 }
