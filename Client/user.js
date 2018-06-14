@@ -9,7 +9,7 @@ function login() {
     $.post(server + 'User/Login', info, (data) => {
         document.location.href = 'orderSite.html?data=' + encodeURIComponent(JSON.stringify(data));
     });
-      return false
+    return false
 }
 
 function signup() {
@@ -32,8 +32,10 @@ function signup() {
             console.log(data);
             var errorList = $('#errorList');
             $.each(data, function (index, val){
-                errorList.append('<li>' + val.data + '</li>');
+                errorList.append('<li>' + val + '</li>');
+                index++;
             });
-        };
-      return false
+        }
+    });
+    return false
 }
