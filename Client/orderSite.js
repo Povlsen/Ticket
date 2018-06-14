@@ -40,6 +40,8 @@ function getOrders() {
     $.get(server + 'Order/Get/Shop/1', (data) => {
         orders = data // save orders
         if (data.length > 0) {
+            document.getElementById('msgForNoOrders').className = 'display-none'
+
             $.each(data, (key, val) => {
                 var div = document.createElement('DIV')
                 div.id = val.Id
@@ -62,7 +64,7 @@ function getOrders() {
 const showDescription = (orderId) => {
     document.getElementById('modal-description').innerText = orders.filter(x => x.Id == orderId)[0].Description
     $(".modals").slideDown()
-} 
+}
 
 $(document).ready(() => {
     $(".modalBtn").click(() => {
