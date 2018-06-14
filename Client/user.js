@@ -13,6 +13,8 @@ function login() {
 }
 
 function signup() {
+    var myList = document.getElementById('errorList');
+    myList.innerHTML ='';
     let info = {
         name: $('#signUp-firstName')[0].value + ' ' + $('#signUp-lastName')[0].value,
         phone: $('#signUp-phoneNumber')[0].value,
@@ -28,12 +30,12 @@ function signup() {
             $('#signupSuccess').empty();
             $('#signupSuccess').append('User Created! :D');
         } else {
+
             //display errors
             console.log(data);
             var errorList = $('#errorList');
             $.each(data, function (index, val){
                 errorList.append('<li>' + val + '</li>');
-                index++;
             });
         }
     });
