@@ -1,5 +1,7 @@
 let server = 'https://ticket-api.nas-tech.dk/API/'
 let loginRes = undefined
+var orders = undefined
+
 const onload = () => {
     var uri = window.location.toString();
     if (uri.indexOf("?") > 0) {
@@ -35,19 +37,37 @@ function orderCreate() {
 
 function getOrders() {
     $.get(server + 'Order/Get/Client/' + loginRes.UserId, (data) => {
+        orders = data // save orders
         if (data.length > 0) {
             $.each(data, (key, val) => {
-                
+                var div = document.createElement('DIV')
+                div.id = val.Id
+
+                var childDiv = document.createElement('DIV')
+                div.innerHTML = '<div>' + val.Id + '</div>'
+                div.innerHTML += '<div>' + val.CreatedByName + '</div>'
+                div.innerHTML += '<div>' + val.Model + '</div>'
+                div.innerHTML += '<div>' + val.RegNum + '</div>'
+                div.innerHTML += '<div>' + val.StateName + '</div>'
+                div.innerHTML += '<div>' + val.Created + '</div>'
+                div.innerHTML += '<button class="modalBtn" onClick=showDescription(' + val.Id + ')>Show more</button>'
+
+                $('#orderList').append(div)
             })
         }
-    });
+    })
 }
-   
-$(document).ready(() =>{
-    $(".modalBtn").click(function(){
-        $(".modals").slideDown();
-    });
-    $(".close").click(function(){
-        $(".modals").slideUp();
-    });
-});
+
+const showDescription = (orderId) => {
+    $("#modal-description").innerHTML = orders.filter(x => x.Id == orderId)[0].Description
+    $(".modals").slideDown()
+} 
+
+$(document).ready(() => {
+    $(".modalBtn").click(() => {
+        $(".modals").slideDown()
+    })
+    $(".close").click(() => {
+        $(".modals").slideUp()
+    })
+})
