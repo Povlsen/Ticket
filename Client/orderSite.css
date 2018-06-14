@@ -32,6 +32,9 @@ ul{
 	color: lightgrey;
 	border-left: 5%;
 }
+#compName:hover{
+	cursor: default;
+}
 #login{
 	background-color: #23b2ff;
 	height: 100%;
@@ -52,25 +55,32 @@ ul{
 #orderForm > input:last-of-type {
 	margin-left: 7.5%;
 	margin-bottom:5%;
-	width: 80%;
+	width: 85%;
 	padding:2.5%;
 	font-size: 80%;
 	border:none;
 	background-color:#23b2ff;
 	color:white;
 }
+#orderForm > input:last-of-type:hover{
+	cursor: pointer;
+	background-color:#13a2ff;
+}
 #orderForm > label > b {
 	color: white;
 	margin-left: 7.5%;
 }
+#orderForm > label > b :hover{
+	cursor: default;
+}
 #orderList{
 	background-color: #e2e2e2;
-	height: 100%;
+	min-height: 100%;
+	overflow-y: scroll;
 }
 #orderList > div{
 	margin:1.25%;
 	width: 97.5%;
-	overflow: auto;
 	display: grid;
 	grid-template-columns:  10% 14% 14% 18% 14% 14% AUTO;
 	height: 7.5%;
@@ -79,12 +89,12 @@ ul{
 	height: auto;
 	text-align: center;
 }
+#orderList >div > div{
+	cursor: default;
+}
 #carImg{
 	height: 100%;
 
-}
-.hide{
-	display: none;
 }
 #logoutBtn{
 	background-color: #515151;
@@ -97,10 +107,15 @@ ul{
 }
 #logoutBtn:hover{
 	background-color: #474747; 
+	cursor: pointer;
 }
 
 .modalBtn{
 	height: 100%;
+}
+.modalBtn:hover{
+
+	cursor: pointer;
 }
 .modals{
 	display: none;
