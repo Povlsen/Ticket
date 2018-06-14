@@ -65,7 +65,15 @@ ul{
 #orderList{
 	background-color: #e2e2e2;
 	height: 100%;
+	display:Grid;
+	grid-template-columns: 100%;
 }
+#orderList > div{
+	display: grid;
+	grid-template-columns:  14% 14% 14% 14% 14% 14% 14%;
+	grid-gap: 1%;
+}
+
 #carImg{
 	height: 100%;
 
