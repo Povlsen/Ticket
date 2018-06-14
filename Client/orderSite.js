@@ -9,6 +9,8 @@ const onload = () => {
         var clean_uri = uri.substring(0, uri.indexOf("?"));
         window.history.replaceState({}, document.title, clean_uri);
     }
+    
+    getOrders()
 }
 
 $(document).ajaxError((event, jqxhr, settings, exception) => {
@@ -31,6 +33,16 @@ function orderCreate() {
       return false
 }
 
+function getOrders() {
+    $.get(server + 'Order/Get/Client/' + loginRes.UserId, (data) => {
+        if (data.length > 0) {
+            $.each(data, (key, val) => {
+                
+            })
+        }
+    });
+}
+   
 $(document).ready(() =>{
     $(".modalBtn").click(function(){
         $(".modals").slideDown();
