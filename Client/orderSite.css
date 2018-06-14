@@ -150,7 +150,7 @@ ul{
 	cursor: pointer;
 	background-color:rgb(82,10,10);
 }
-.msgForNoOrders{
+.display-none {
 	display: none;
 	text-align: center;
 }
