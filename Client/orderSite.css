@@ -68,18 +68,17 @@ ul{
 	height: 100%;
 }
 #orderList > div{
-	width: 100%;
+	margin:1.25%;
+	width: 97.5%;
 	overflow: auto;
 	display: grid;
-	grid-template-columns:  auto auto auto auto auto auto auto;
-	grid-gap: 1%;
-	height: 10%;
+	grid-template-columns:  10% 14% 14% 18% 14% 14% AUTO;
+	height: 7.5%;
 }
 #orderList >div > div{
-	margin-top: 2.5%;
-	height: 50%;
+	height: auto;
+	text-align: center;
 }
-
 #carImg{
 	height: 100%;
 
@@ -101,9 +100,7 @@ ul{
 }
 
 .modalBtn{
-	height: 50%;
-}
-#modal{
+	height: 100%;
 }
 .modals{
 	display: none;
