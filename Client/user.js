@@ -5,7 +5,6 @@ function login() {
         email: $('#login-email')[0].value, 
         password: $('#login-password')[0].value 
     }
-
     $.post(server + 'User/Login', info, (data) => {
         document.location.href = 'orderSite.html?data=' + encodeURIComponent(JSON.stringify(data));
     });
