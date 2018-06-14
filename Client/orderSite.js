@@ -14,10 +14,14 @@ const onload = () => {
     
     getOrders()
 }
+function logOut(){
+    loginRes = undefined;
+    document.location.href = 'index.html';
+}
 
 $(document).ajaxError((event, jqxhr, settings, exception) => {
     if (jqxhr.status === 401) {
-        document.location.href = 'index.html'
+        logOut();
     }
 });
 

@@ -75,7 +75,6 @@ ul{
 }
 #orderList{
 	background-color: #e2e2e2;
-	min-height: 100%;
 	overflow-y: scroll;
 }
 #orderList > div{
@@ -126,9 +125,9 @@ ul{
 	z-index: 99;
 	max-height: 30%;
 }
-#modal-content >div{
+#modal-content>div{
 	overflow-y: scroll;
-	max-height: 25%;
+	margin-bottom: 5%;
 }
 #modal-description{
 	margin-left: 25%; 
